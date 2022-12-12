@@ -28,7 +28,9 @@ contract FundMe {
 
     modifier onlyOwner() {
         //  require(msg.sender == i_owner, "Sender is not owner!"); // == means 'check if this right' whereas = means setting
-        if (msg.sender != i_owner) revert FundMe__NotOwner();
+        if (msg.sender != i_owner) {
+            revert FundMe__NotOwner();
+        }
         _;
         // first do the require, then do the underscore (everything else in the code)
     }
