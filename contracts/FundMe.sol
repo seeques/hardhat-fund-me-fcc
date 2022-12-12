@@ -42,8 +42,9 @@ contract FundMe {
         // Want to be albe to set a minimal fund amount in SUD
         // 1. How do we send ETH to this contract?
         // Now tha we having 'payable' in our function, we can access 'Value' in our function
-        if (msg.value.getConversionRate(s_priceFeed) < MINIMUM_USD)
-            revert FundMe__NeedToSpendMoreETH(); // 1e18 = 1 * 10 ** 18 (value in Wei for 1 ETH)
+        if (msg.value.getConversionRate(s_priceFeed) < MINIMUM_USD) {
+            revert FundMe__NeedToSpendMoreETH();
+        } // 1e18 = 1 * 10 ** 18 (value in Wei for 1 ETH)
 
         // msg.value is considered the first parameter for any of the library functions. that is why we did not write the parameter in getConversionRate
 
